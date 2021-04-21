@@ -1,5 +1,4 @@
 {
-  "solidity.enableLocalNodeCompiler": false,
   "solidity.compileUsingRemoteVersion": "latest",
   "solidity.packageDefaultDependenciesContractsDirectory": "",
   "solidity.enabledAsYouTypeCompilationErrorCheck": true,
@@ -9,5 +8,6 @@
     "HARDHAT_CONFIG": "hardhat.config.ts",
     "HARDHAT_COMPILE": "true"
   },
-  "mochaExplorer.require": ["ts-node/register/transpile-only"]
+  "mochaExplorer.require": ["ts-node/register/transpile-only"],
+  "mochaExplorer.files": "test/**/*.{j,t}s"
 }

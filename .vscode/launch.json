@@ -4,11 +4,11 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "hardhat test",
+      "name": "hardhat run",
       "skipFiles": ["<node_internals>/**"],
       "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/hardhat",
-      "args": ["test"],
-      "cwd": "${workspaceFolder}/packages/hardhat"
+      "args": ["run", "scripts/demo.ts"],
+      "cwd": "${workspaceFolder}"
     }
   ]
 }
