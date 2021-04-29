@@ -5,7 +5,7 @@ import { BigNumber } from 'ethers'
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployments, getNamedAccounts, ethers } = hre
-  const { deploy } = deployments
+  const { deploy, execute } = deployments
 
   const signers = await ethers.getSigners()
 
@@ -18,13 +18,15 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     { account: signers[1].address, amount: BigNumber.from(101) },
   ])
 
-  await deploy('MerkleDistributor', {
+  const distributor = await deploy('MerkleDistributor', {
     from: deployer,
     args: [token.address, tree.getHexRoot()],
     log: true,
   })
+
+  await execute('TestERC20', { from: deployer, log: true }, 'setBalance', distributor.address, 201)
 }
 
 export default func
 
-func.tags = ['Party']
+func.tags = ['MerkleDistributor']

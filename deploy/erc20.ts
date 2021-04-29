@@ -9,7 +9,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   await deploy('TestERC20', {
     from: deployer,
-    args: ['Token', 'TKN', 10000],
+    args: ['Token', 'TKN', 0],
     log: true,
     deterministicDeployment: true,
   })

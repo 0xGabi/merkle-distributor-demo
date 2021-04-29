@@ -5,14 +5,15 @@ import chalk from 'chalk'
 
 import { task, HardhatUserConfig } from 'hardhat/config'
 
+import '@nomiclabs/hardhat-ethers'
 import '@nomiclabs/hardhat-waffle'
-import '@tenderly/hardhat-tenderly'
+import '@typechain/hardhat'
 import 'hardhat-deploy'
-import 'hardhat-abi-exporter'
 import 'hardhat-gas-reporter'
-import 'hardhat-typechain'
 import 'solidity-coverage'
 import { HttpNetworkUserConfig } from 'hardhat/types'
+
+process.removeAllListeners('warning')
 
 const { isAddress, getAddress, formatUnits, parseUnits } = utils
 
@@ -120,21 +121,6 @@ const config: HardhatUserConfig = {
   namedAccounts: {
     deployer: 0,
     tester: 1,
-  },
-  gasReporter: {
-    enabled: process.env.REPORT_GAS ? true : false,
-  },
-  typechain: {
-    outDir: 'typechain',
-    target: 'ethers-v5',
-  },
-  abiExporter: {
-    path: './abis',
-    clear: true,
-  },
-  tenderly: {
-    username: '',
-    project: '',
   },
 }
 
